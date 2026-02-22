@@ -20,7 +20,7 @@ Este proyecto es la **API backend** de un rastreador de hábitos, desarrollada c
 1. Clona el repositorio:
 ```bash
 
-git clone <URL-DE-TU-REPO>
+git clone https://github.com/Hyasmin96/habits-tracker-backend
 
 cd habits-tracker-backend
 
@@ -36,7 +36,7 @@ npm install
 3. Configura las variables de entorno creando un archivo .env en la raíz del proyecto:
 ```bash
 
-MONGO_URI=<TU_URI_DE_MONGODB>
+MONGO_URI=mongodb+srv://hc3826_db_user:X9FU7rw556zDrR6m@cluster0.w66yq2x.mongodb.net/habitosApp?appName=Cluster0
 PORT=3001
 
 ```
