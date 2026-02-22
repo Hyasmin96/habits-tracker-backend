@@ -103,10 +103,9 @@ DELETE http://localhost:3001/habits/<ID_DEL_HABITO>
 >Nota: Reemplaza <ID_DEL_HABITO> con el _id real del hábito que deseas eliminar.
 
 ---
+**Notas adicionales:**
 
 ```text
-
-**Notas adicionales:**
 
 - Para cambiar el puerto, edita la variable PORT en el archivo .env.
 
