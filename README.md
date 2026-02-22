@@ -58,7 +58,7 @@ npm start
 | ------ | ------------- | ------------------------- |
 | GET    | `/habits`     | Obtener todos los hábitos |
 | POST   | `/habits`     | Crear un nuevo hábito     |
-| PUT    | `/habits/:id` | Actualizar un hábito      |
+| PUT    | `/habits/:id` | (Por completar)           |
 | DELETE | `/habits/:id` | Eliminar un hábito        |
 
 > Puedes probarlos usando Postman.
