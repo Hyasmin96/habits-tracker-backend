@@ -89,11 +89,8 @@ POST http://localhost:3001/habits
 
 ```
 
-```text
+> Haz clic en Send en Postman y verás que el nuevo hábito se agrega a la base de datos.
 
- Haz clic en Send en Postman y verás que el nuevo hábito se agrega a la base de datos.
-
-```
 
 
 **DELETE - Eliminar un habito mediante su id:**
@@ -103,28 +100,7 @@ DELETE http://localhost:3001/habits/<ID_DEL_HABITO>
 
 ```
 
-```text
-
-Nota: Reemplaza <ID_DEL_HABITO> con el _id real del hábito que deseas eliminar.
-
-```
-
----
-## 📁 Estructura del proyecto
-habits-tracker-backend/
-│
-├─ bin/             # Archivo de arranque del servidor
-├─ config/          # Configuración de la base de datos y otros settings
-├─ models/          # Modelos de datos con Mongoose
-├─ node_modules/    # Dependencias del proyecto
-├─ public/          # Archivos estáticos (CSS, imágenes)
-├─ routes/          # Definición de rutas
-├─ views/           # Vistas (si usas plantillas)
-├─ .env             # Variables de entorno
-├─ app.js           # Archivo principal de Express
-├─ package.json
-├─ package-lock.json
-└─ README.md
+>Nota: Reemplaza <ID_DEL_HABITO> con el _id real del hábito que deseas eliminar.
 
 ---
 
