@@ -20,7 +20,7 @@ Este proyecto es la **API backend** de un rastreador de hábitos, desarrollada c
 1. Clona el repositorio:
 ```bash
 
-git clone https://github.com/Hyasmin96/habits-tracker-backend
+git clone https://github.com/Hyasmin96/habits-tracker-backend.git
 
 cd habits-tracker-backend
 
