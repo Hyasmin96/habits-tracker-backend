@@ -25,7 +25,7 @@ const authenticateToken = (req, res, next) => {
 
 // GET página principal
 router.get("/", function (req, res) {
-  res.render("index", { title: "Express" });
+  res.json({ message: "API funcionando" });
 });
 
 // GET obtener hábitos del usuario
