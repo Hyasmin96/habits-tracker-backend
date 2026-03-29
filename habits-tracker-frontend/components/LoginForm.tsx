@@ -10,58 +10,64 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // LOGIN
-  const handleLogin = async () => {
-    try {
-      const res = await fetch("http://localhost:3001/users/login", {
+// LOGIN
+const handleLogin = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/users/login`,
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
-      });
-
-      const contentType = res.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error(
-          "Respuesta del servidor no es JSON. ¿Está corriendo el backend?"
-        );
       }
+    );
 
-      const data = await res.json();
-
-      if (res.ok) {
-        localStorage.setItem("token", data.token);
-        onLogin(); 
-        alert("Login exitoso!");
-      } else {
-        alert(data.message || "Error en login");
-      }
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message || "Error de conexión al servidor");
+    const contentType = res.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error(
+        "Respuesta del servidor no es JSON. ¿Está corriendo el backend?"
+      );
     }
-  };
 
-  // REGISTER
-  const handleRegister = async () => {
-    try {
-      const res = await fetch("http://localhost:3001/users/register", {
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("token", data.token);
+      onLogin();
+      alert("Login exitoso!");
+    } else {
+      alert(data.message || "Error en login");
+    }
+  } catch (err: any) {
+    console.error(err);
+    alert(err.message || "Error de conexión al servidor");
+  }
+};
+
+// REGISTER
+const handleRegister = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/users/register`,
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        alert("Registro exitoso! Ahora haz login.");
-      } else {
-        alert(data.error || "Error en registro");
       }
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message || "Error de conexión al servidor");
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      alert("Registro exitoso! Ahora haz login.");
+    } else {
+      alert(data.error || "Error en registro");
     }
-  };
+  } catch (err: any) {
+    console.error(err);
+    alert(err.message || "Error de conexión al servidor");
+  }
+};
 
   return (
     <div style={styles.container}>

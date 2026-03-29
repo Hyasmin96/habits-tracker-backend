@@ -1,13 +1,16 @@
 export const fetchHabits = async () => {
-  const token = localStorage.getItem("token"); // obtenemos el token
+  const token = localStorage.getItem("token");
   if (!token) throw new Error("No se encontró token de usuario");
 
-  const response = await fetch("http://localhost:3001/habits", {
-    headers: {
-      "Authorization": `Bearer ${token}`, // enviamos token al backend
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/habits`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
@@ -19,11 +22,16 @@ export const fetchHabits = async () => {
 
 // NUEVA FUNCIÓN PARA MARCAR DONE
 export const markHabitDone = async (id: string) => {
+  const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `http://localhost:3001/habits/markasdone/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/habits/markasdone/${id}`,
     {
       method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`, // 👈 IMPORTANTE (te faltaba)
+        "Content-Type": "application/json",
+      },
     }
   );
 

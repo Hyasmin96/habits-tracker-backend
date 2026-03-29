@@ -12,37 +12,40 @@ export default function AddHabitForm({ token, onHabitAdded }: AddHabitFormProps)
   const [description, setDescription] = useState("");
 
   const handleAddHabit = async () => {
-    if (!title || !description) {
-      alert("Por favor completa ambos campos");
-      return;
-    }
+  if (!title || !description) {
+    alert("Por favor completa ambos campos");
+    return;
+  }
 
-    try {
-      const res = await fetch("http://localhost:3001/habits", {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/habits`,
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`, // enviamos token para autorización
         },
         body: JSON.stringify({ title, description }),
-      });
-
-      const data = await res.json();
-      console.log("Respuesta agregar hábito:", data);
-
-      if (res.ok) {
-        alert("Hábito agregado!");
-        setTitle("");
-        setDescription("");
-        onHabitAdded(); // recarga lista de hábitos
-      } else {
-        alert(data.message || "Error al agregar hábito");
       }
-    } catch (err: any) {
-      console.error("Error al agregar hábito:", err);
-      alert("Error de conexión al servidor");
+    );
+
+    const data = await res.json();
+    console.log("Respuesta agregar hábito:", data);
+
+    if (res.ok) {
+      alert("Hábito agregado!");
+      setTitle("");
+      setDescription("");
+      onHabitAdded(); // recarga lista de hábitos
+    } else {
+      alert(data.message || "Error al agregar hábito");
     }
-  };
+  } catch (err: any) {
+    console.error("Error al agregar hábito:", err);
+    alert("Error de conexión al servidor");
+  }
+};
 
   return (
     <div style={styles.container}>

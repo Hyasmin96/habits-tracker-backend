@@ -35,11 +35,14 @@ export const fetchHabitsThunk = createAsyncThunk<
 
     if (!token) throw new Error("No token found");
 
-    const response = await fetch("http://localhost:3001/habits", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+  `${process.env.NEXT_PUBLIC_API_URL}/habits`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
     if (!response.ok) {
       const err = await response.json();
@@ -68,7 +71,7 @@ export const markHabitDoneThunk = createAsyncThunk<
     if (!token) throw new Error("No token found");
 
     const response = await fetch(
-      `http://localhost:3001/habits/markasdone/${id}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/habits/markasdone/${id}`,
       {
         method: "PATCH",
         headers: {
